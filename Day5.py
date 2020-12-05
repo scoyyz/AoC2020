@@ -1,6 +1,8 @@
 
 seats = []
-highest = 0
+
+seat_ids = []
+
 
 with open("Day5.txt") as file:
   seats = file.readlines()
@@ -29,8 +31,17 @@ for seat in seats:
     column += 2
   if seat[9] == 'R':
     column += 1
-  test = row * 8 + column
-  if test > highest:
-    highest = test
+  id = row * 8 + column
+  seat_ids.append(id)
 
-print(highest)
+seat_ids.sort()
+print(seat_ids)
+i = 0
+while i < len(seat_ids):
+  if seat_ids[i] + 1 == seat_ids[i+1]:
+    i += 1
+  elif (seat_ids[i] + 2) in seat_ids:
+    print(seat_ids[i] + 1)
+    break
+  else:
+    i += 1
