@@ -34,14 +34,29 @@ for seat in seats:
   id = row * 8 + column
   seat_ids.append(id)
 
-seat_ids.sort()
-print(seat_ids)
-i = 0
-while i < len(seat_ids):
-  if seat_ids[i] + 1 == seat_ids[i+1]:
-    i += 1
-  elif (seat_ids[i] + 2) in seat_ids:
-    print(seat_ids[i] + 1)
-    break
-  else:
-    i += 1
+
+# seat_ids.sort()
+# print(seat_ids)
+# i = 0
+# while i < len(seat_ids):
+  # if seat_ids[i] + 1 == seat_ids[i+1]:
+    # i += 1
+  # elif (seat_ids[i] + 2) in seat_ids:
+    # print(seat_ids[i] + 1)
+    # break
+  # else:
+    # i += 1
+
+row = 0
+column = 0
+while row < 128:
+    while column < 8:
+      id = row * 8 + column
+      if (id not in seat_ids) and ((id + 1) in seat_ids) and ((id - 1) in seat_ids):
+        print(id)
+        row = 128
+        column = 8
+      else:
+        column += 1
+    row += 1
+    column = 0
