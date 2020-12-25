@@ -6,21 +6,23 @@ doorloop = 0
 
 
 def Transform(subject,loopsize):
-  value = 1
+  result = 1
   for i in range(0,loopsize):
-    value *= subject
-    value %= divisor
-  return value
+    result *= subject
+    result %= divisor
+  return result
+
 
 j = 0
+value = 1
 while True:
   j += 1
-  print(j)
-  result = Transform(7,j)
-  if result == cardkey:
+  value *= 7
+  value %= divisor
+  if value == cardkey:
     cardloop = j
     print("Card loop is " + str(j))
-  elif result == doorkey:
+  elif value == doorkey:
     doorloop = j
     print("Door loop is " + str(j))
   if cardloop != 0 and doorloop != 0:
